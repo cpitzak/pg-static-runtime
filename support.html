@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Support for PercentGain." />
+    <title>Support | PercentGain</title>
+
+    <style>
+      :root {
+        --bg-dark: #070d1a;
+        --text-main: #f8fafc;
+        --text-subtle: #94a3b8;
+        --accent-blue: #38bdf8;
+        --card-bg: #111c30;
+        --input-bg: #0b1220;
+        --success: #22c55e;
+        --error: #f87171;
+        --border: rgba(148, 163, 184, 0.25);
+      }
+
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        margin: 0;
+        padding: 2rem 1rem;
+        line-height: 1.65;
+      }
+
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 2rem;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+      }
+
+      h1 {
+        color: var(--text-main);
+        line-height: 1.2;
+        margin-top: 0;
+        font-size: 2.25rem;
+      }
+
+      p {
+        color: var(--text-subtle);
+      }
+
+      a {
+        color: var(--accent-blue);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      label {
+        display: block;
+        color: var(--text-main);
+        font-weight: 800;
+        margin-top: 1rem;
+        margin-bottom: 0.35rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        background: var(--input-bg);
+        color: var(--text-main);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 0.85rem;
+        font: inherit;
+        outline: none;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16);
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      button {
+        margin-top: 1.25rem;
+        background-color: var(--accent-blue);
+        color: #07101f;
+        padding: 0.85rem 1.4rem;
+        font-size: 1rem;
+        font-weight: 900;
+        border: none;
+        border-radius: 999px;
+        cursor: pointer;
+        min-width: 150px;
+      }
+
+      button:hover:not(:disabled) {
+        filter: brightness(0.95);
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-bottom: 1.5rem;
+      }
+
+      .small-note {
+        font-size: 0.9rem;
+        margin-top: 1rem;
+      }
+
+      .status-message {
+        border-radius: 10px;
+        display: none;
+        font-weight: 800;
+        margin-top: 1rem;
+        padding: 0.85rem;
+      }
+
+      .status-message.success {
+        background: rgba(34, 197, 94, 0.12);
+        color: var(--success);
+        display: block;
+      }
+
+      .status-message.error {
+        background: rgba(248, 113, 113, 0.12);
+        color: var(--error);
+        display: block;
+      }
+
+      .spinner {
+        animation: spin 0.9s linear infinite;
+        border: 3px solid rgba(7, 16, 31, 0.25);
+        border-top-color: #07101f;
+        border-radius: 50%;
+        display: none;
+        height: 16px;
+        margin-right: 0.5rem;
+        width: 16px;
+        vertical-align: middle;
+      }
+
+      button.loading .spinner {
+        display: inline-block;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .hidden-field {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <a class="back-link" href="/">← Back to PercentGain</a>
+
+      <h1>PercentGain Support</h1>
+
+      <p>
+        Need help with PercentGain? Send a support request using the form below.
+      </p>
+
+      <form id="support-form">
+        <input
+          type="hidden"
+          name="access_key"
+          value="6a6e3154-1dd3-46cb-90d0-f8d3e5fe21cc"
+        />
+        <input
+          type="hidden"
+          name="subject"
+          value="PercentGain Support Request"
+        />
+        <input
+          type="hidden"
+          name="from_name"
+          value="PercentGain Support Form"
+        />
+
+        <input
+          class="hidden-field"
+          type="checkbox"
+          name="botcheck"
+          tabindex="-1"
+          autocomplete="off"
+        />
+
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required />
+
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+        />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button id="submit-button" type="submit">
+          <span class="spinner"></span>
+          <span id="submit-button-text">Send Message</span>
+        </button>
+
+        <div
+          id="status-message"
+          class="status-message"
+          role="status"
+          aria-live="polite"
+        ></div>
+      </form>
+
+      <p class="small-note">
+        Please do not include sensitive personal information, passwords, account
+        numbers, or financial account details in your message.
+      </p>
+
+      <p class="small-note">
+        View our <a href="/privacy.html">Privacy Policy</a>.
+      </p>
+    </main>
+
+    <script>
+      const form = document.getElementById("support-form");
+      const submitButton = document.getElementById("submit-button");
+      const submitButtonText = document.getElementById("submit-button-text");
+      const statusMessage = document.getElementById("status-message");
+
+      function setLoading(isLoading) {
+        submitButton.disabled = isLoading;
+        submitButton.classList.toggle("loading", isLoading);
+        submitButtonText.textContent = isLoading
+          ? "Sending..."
+          : "Send Message";
+      }
+
+      function showStatus(type, message) {
+        statusMessage.className = `status-message ${type}`;
+        statusMessage.textContent = message;
+      }
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        setLoading(true);
+        statusMessage.className = "status-message";
+        statusMessage.textContent = "";
+
+        try {
+          const formData = new FormData(form);
+
+          const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData,
+          });
+
+          const result = await response.json();
+
+          if (!response.ok || !result.success) {
+            throw new Error(result.message || "Message could not be sent.");
+          }
+
+          form.reset();
+
+          showStatus(
+            "success",
+            "Message sent. Thanks for contacting PercentGain support. We’ll review your request and reply if needed.",
+          );
+
+          submitButtonText.textContent = "Sent";
+        } catch (error) {
+          console.error(error);
+
+          showStatus(
+            "error",
+            "Your message could not be sent. Please check your connection and try again.",
+          );
+
+          submitButtonText.textContent = "Send Message";
+        } finally {
+          submitButton.disabled = false;
+          submitButton.classList.remove("loading");
+        }
+      });
+    </script>
+  </body>
+</html>
